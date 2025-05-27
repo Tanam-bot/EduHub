@@ -7,6 +7,9 @@ import Payment from "../Pages/AuthFile/Payment/Payment";
 import Profile from "../Pages/AuthFile/Profile/Profile";
 import BloodCamp from "../Pages/AuthFile/BloodCamp/BloodCamp";
 import ProfileOfHelper from "../Pages/AuthFile/ProfileOfHelper/ProfileOfHelper";
+import BooksBuyAndSell from "../Pages/AuthFile/BooksBuyAndSell/BooksBuyAndSell";
+import BookBuy from "../Pages/AuthFile/BuyBookAndItems/BookBuy/BookBuy";
+import ItemBuy from "../Pages/AuthFile/BuyBookAndItems/ItemBuy/ItemBuy";
 
 export const route = createBrowserRouter([
   {
@@ -36,6 +39,14 @@ export const route = createBrowserRouter([
       {
         path: "/bloodCamp",
         element: <BloodCamp />,
+      },
+      {
+        path: "/booksBuySell",
+        element: <BookBuy />,
+      },
+      {
+        path: "/itemBuySell",
+        element: <ItemBuy />,
       },
       {
         path: "/blood-donor/:id",
