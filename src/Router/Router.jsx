@@ -7,9 +7,13 @@ import Payment from "../Pages/AuthFile/Payment/Payment";
 import Profile from "../Pages/AuthFile/Profile/Profile";
 import BloodCamp from "../Pages/AuthFile/BloodCamp/BloodCamp";
 import ProfileOfHelper from "../Pages/AuthFile/ProfileOfHelper/ProfileOfHelper";
-import BooksBuyAndSell from "../Pages/AuthFile/BooksBuyAndSell/BooksBuyAndSell";
 import BookBuy from "../Pages/AuthFile/BuyBookAndItems/BookBuy/BookBuy";
 import ItemBuy from "../Pages/AuthFile/BuyBookAndItems/ItemBuy/ItemBuy";
+import AuthHome from "../Pages/AuthFile/AuthHome/AuthHome/AuthHome";
+import ProfileSetting from "../Pages/AuthFile/Profile/ProfileSetting/ProfileSetting";
+import Courses from "../Pages/AuthFile/Courses/Courses/Courses";
+import CourseDetails from "../Pages/AuthFile/Courses/courseDetails/courseDetails";
+import FreelancingInstructor from "../Pages/AuthFile/Freelancing/Freelancing/FreelancingInstructor";
 
 export const route = createBrowserRouter([
   {
@@ -28,13 +32,14 @@ export const route = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
-      {
-        path: "/payment",
-        element: <Payment />,
-      },
+
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/profileSetting",
+        element: <ProfileSetting />,
       },
       {
         path: "/bloodCamp",
@@ -51,6 +56,27 @@ export const route = createBrowserRouter([
       {
         path: "/blood-donor/:id",
         element: <ProfileOfHelper />,
+      },
+      {
+        path: "/authHome",
+        element: <AuthHome />,
+      },
+      {
+        path: "/courses",
+        element: <Courses />,
+      },
+      {
+        path: "/payment",
+        element: <Payment />,
+      },
+      {
+        path: "/freelancingInstructor",
+        element: <FreelancingInstructor />,
+      },
+      // use this next
+      {
+        path: "/courseDetails",
+        element: <CourseDetails />,
       },
     ],
   },

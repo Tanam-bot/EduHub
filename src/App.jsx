@@ -1,10 +1,9 @@
 function App() {
-
   return (
-    <>
-      <h1>this is tanam project</h1>
-    </>
-  )
+    <div>
+      <h1>this is EDU projects</h1>
+    </div>
+  );
 }
 
-export default App
+export default App;

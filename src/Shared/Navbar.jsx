@@ -37,7 +37,7 @@ const Navbar = () => {
             </ul>
           </div>
           <img className="w-[14%]" src={Eduhub} alt="" />
-          <h1 class="text-2xl font-semibold text-gray-800">EDUHUB</h1>
+          <h1 class="text-2xl font-semibold text-gray-800">NextGen Learner</h1>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

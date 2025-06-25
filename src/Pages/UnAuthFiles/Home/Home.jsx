@@ -19,7 +19,7 @@ const Home = () => {
             <div className="my-auto">
               <div className="flex flex-col items-center justify-center pb-20 pt-20">
                 <h1 className="text-5xl font-semibold fade-in-text mb-5">
-                  Learn, Earn and Grow by EduHub
+                  Learn, Earn and Grow by NextGen Learner
                 </h1>
 
                 <div className="flex justify-center space-x-5">

@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useUser } from "../CustomProvider/userContext";
+import useBloodDonors from "../../../hooks/useBloodDonners";
 
 const AuthNavbar = () => {
+  const { userEmail } = useUser();
+  const [users] = useBloodDonors(); // get the data array from the object
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    console.log("userEmail:", userEmail);
+    console.log("users:", users?.data);
+
+    if (userEmail && users?.data?.length > 0) {
+      const foundUser = users.data.find((user) => user?.email === userEmail);
+      console.log("foundUser:", foundUser);
+      setCurrentUser(foundUser || null);
+    }
+  }, [userEmail, users]);
+  console.log("currentUser form", currentUser);
+
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -28,22 +46,12 @@ const AuthNavbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           ></ul>
         </div>
-        <a className="btn btn-ghost text-xl">EduHub</a>
+        <a className="btn btn-ghost text-xl">NextGen Learner</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <details>
-              <summary>Course</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Buy</a>
-                </li>
-                <li>
-                  <a>Sell</a>
-                </li>
-              </ul>
-            </details>
+            <NavLink to="/courses">Courses</NavLink>
           </li>
           <li>
             <details>
@@ -76,7 +84,9 @@ const AuthNavbar = () => {
               <summary>Freelancing</summary>
               <ul className="p-2">
                 <li>
-                  <a>Apply for Instructor</a>
+                  <NavLink to="/freelancingInstructor">
+                    Apply for Instructor
+                  </NavLink>
                 </li>
                 <li>
                   <a>Find Freelancing</a>
@@ -90,7 +100,44 @@ const AuthNavbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">LogOut</a>
+        <div className="dropdown dropdown-end">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost btn-circle avatar"
+          >
+            {currentUser?.photoUrl ? (
+              <img
+                src={currentUser?.photoUrl}
+                alt="User Image"
+                className="w-24 h-24 rounded-full object-cover"
+              />
+            ) : (
+              <>
+                {" "}
+                <img
+                  src="/img/profile.png"
+                  alt="User Image"
+                  className="w-24 h-24 rounded-full object-cover"
+                />
+              </>
+            )}
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+          >
+            <li>
+              <NavLink to="/profile">Profile</NavLink>
+            </li>
+            <li>
+              <NavLink to="/profileSetting">Setting</NavLink>
+            </li>
+            <li>
+              <a>Logout</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

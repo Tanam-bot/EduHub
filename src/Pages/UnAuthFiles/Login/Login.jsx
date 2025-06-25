@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { NavLink } from "react-router-dom";
-
+import { NavLink, useNavigate } from "react-router-dom";
+import loginImg from "../../../../src/assets/images/login.jpg";
 const Login = () => {
   const {
     register,
@@ -9,7 +9,7 @@ const Login = () => {
     reset,
     formState: { error },
   } = useForm();
-
+  const navigate = useNavigate();
   const onSubmit = async (data) => {
     const userData = {
       email: data.email,
@@ -21,22 +21,32 @@ const Login = () => {
         "http://localhost:5000/api/v1/auth/login",
         data
       );
-      if (response.ok) {
-        alert("Registration successful!");
-        reset(); // Clear form
-      } else {
-        alert(`Registration failed: ${response.message}`);
+
+      // If the request was successful, it won't go to catch
+      alert("Login successful!");
+      console.log("Logged in user:", response.data.data.user); // optional
+      if (response.data?.data?.user) {
+        const { email } = response.data.data.user;
+        localStorage.setItem("email", email);
+        navigate("/profile"); //
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("Something went wrong while submitting the form.");
+      // Handle error response
+      if (error.response && error.response.data) {
+        alert(
+          `Login failed: ${error.response.data.message || "Unknown error"}`
+        );
+      } else {
+        alert("Something went wrong while submitting the form.");
+      }
+      console.error("Login error:", error);
     }
   };
 
   return (
     <div className="p-10 bg-white flex items-center">
       <div className="flex-1">
-        <h1 className="textColor mb-[10%] ">UiU CLS</h1>
+        <h1 className="textColor mb-[10%] ">NextGen Learner</h1>
         <p className="textColor ml-[65%]">
           <u>Login</u>
         </p>
@@ -79,7 +89,7 @@ const Login = () => {
           </div>
           {/* this is submit btn */}
           <div className="form-control mt-6 mb-9 w-[80%]">
-            <input className="signUpBtn" type="submit" value="Create Account" />
+            <input className="signUpBtn" type="submit" value="Login" />
           </div>
         </form>
 
@@ -91,9 +101,9 @@ const Login = () => {
           </NavLink>{" "}
         </p>
       </div>
-      {/* <div className="flex-1">
+      <div className="flex-1">
         <img className="w-[100%]" src={loginImg} alt="" />
-      </div> */}
+      </div>
     </div>
   );
 };
