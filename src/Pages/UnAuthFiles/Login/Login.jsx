@@ -46,7 +46,7 @@ const Login = () => {
   return (
     <div className="p-10 bg-white flex items-center">
       <div className="flex-1">
-        <h1 className="textColor mb-[10%] ">NextGen Learner</h1>
+        <h1 className="textColor mb-[10%] ">EDU Hub</h1>
         <p className="textColor ml-[65%]">
           <u>Login</u>
         </p>

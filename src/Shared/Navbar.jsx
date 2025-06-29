@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import Eduhub from "../assets/images/image.png";
+import NextGenLearner from "../assets/images/image.png";
 const Navbar = () => {
   return (
     <div>
@@ -36,7 +36,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <img className="w-[14%]" src={Eduhub} alt="" />
+          <img className="w-[14%]" src={NextGenLearner} alt="" />
           <h1 class="text-2xl font-semibold text-gray-800">NextGen Learner</h1>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -46,7 +46,7 @@ const Navbar = () => {
             </li>
 
             <li>
-              <a>About</a>
+              <NavLink to="/aboutUs">About</NavLink>
             </li>
           </ul>
         </div>
